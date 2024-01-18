@@ -139,6 +139,26 @@ When viewing the `About` page - `src/app/about/page.js`, the content of the page
 + `Homepage`: `http://localhost:3000/`
 + `About`: `http://localhost:3000/about`
 
+### Links
+There are three ways to navigate between routes in `Next`:
+
++ Using the `<Link>` component
++ Using the `useRouter` Hook
++ Using the native `History API`
+
+#### `<Link>` Component
+The `<Link>` component is built-into Next and extends the HTML `<a>` tag to provide prefetching and client-side navigation between routes. It is the primary and recommended way to navigate between routes in `Next`.
+
+This component is imported from `next/link` and we use the `href` prop to the component.
+
+```javascript
+import Link from 'next/link'
+
+export default function Home() {
+  return <Link href="/about">About</Link>
+}
+```
+
 ## Updating & Modifying the `<head>`
 To update the `<head>` section of a page(s)/route, we can use the `built-in SEO support`. Metadata can be defined by exporting a `metadata object` or `generateMetadata function` in a `layout.js` or `page.js` file.
 
