@@ -188,6 +188,35 @@ This will render `<title>Test App</title>` for every page/route in our applicati
 + A `Server component` is a component that is fetched and rendered **ON THE SERVER**
 + A `Client component` is a component that is fetched and rendered **ON THE CLIENT (BROWSER)**
 
+When a user requests a web page from a server, the server responds and sends data to the browser. The browser then downloads the JavaScript and builds the web page. The browser has to install all the necessary JavaScript, including any `npm` packages, to build the web page. This can increase the loading time and impact the experience for the user. A server component is built on the server and returns HTML, removing the need to download JavaScript files, as with client components. This reduces the rendering time and improves the user experience.
+
+An example of components:
+
++ `Navbar` - this would be a `Server component`
++ `Sidebar` - this would be a `Server component`
++ `Main` - this would be a `Server component`
++ `Search` - this would be a `Client component`
++ `Button` - this would be a `Client component`
+
+`Server components` are used for:
+
++ To `Fetch data`
++ Access `backend resources` directly
++ Keep sensitive data on the server, such as `access tokens` and `API keys`
++ Reduce `client-side JavaScript`
+
+Here are some of the benefits of using `Server components`:
+
++ `Data Fetching`: using `Server components` allows us to move data fetching to the server, closer to the data source. This helps to improve performance and reducing the time it takes to fetch any data needed for rendering. This helps to reduce the number of requests the client needs to make.
++ `Security`: allows sensitive data and logic to remain on the server, such as `tokens` and `API keys`, without exposing them to the client.
++ `Caching`: By rendering on the server, the result can be cached and reused on subsequent requests across users. This improves performance and reduces the amount of rendering and data fetching done on each request.
++ `Bundle size`: allows large dependencies on the server to reduce the impact on the client when using JavaScript bundles. This reduces the size of the bundle required to be downloaded by the client (browser), which is then required to download, parse and execute.
++ `Initial Page Load`: we can generate HTML to allow users to view the page immediately without waiting for the client to download, parse and execute the JavaScript needed to render the page. This also improves `First Contentful Paint (FCP)`.
++ `Search Engine Optimisation (SEO)`: rendered HTML can be used by search engine bots to index our pages. This also benefits social media to generate previews of pages.
++ `Streaming`: we can split the rendering of `Server components` into chunks and stream them to the client as they become available. This allows the user to see parts of the page earlier without having to wait for the entire page to be rendered on the server.
+
+`Next` recommends using `Server components` until we need to use `Client components`. React hooks, such as `useState()`, `useEffect()`, and `useContext()`, are only available when using `Client components`. Furthermore, if we need to access browser-related features such as `onClick`, `window`, or `browserAPI`, these also need to be `Client components`.
+
 It may always be best to add reusable React components into a directory within the `src` folder to make them easier to find - such as `src/app/components/`
 
 To use a `Client component`, use the `"use client"` directive at the top of the file, above any imports. A `Button` component would be an example of a `Client component`.
