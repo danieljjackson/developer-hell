@@ -191,3 +191,53 @@ This will render `<title>Test App</title>` for every page/route in our applicati
 It may always be best to add reusable React components into a directory within the `src` folder to make them easier to find - such as `src/app/components/`
 
 To use a `Client component`, use the `"use client"` directive at the top of the file, above any imports. A `Button` component would be an example of a `Client component`.
+
+As an example, here's adding a `Button` component which is within a file of `src/app/components/button/index.jsx`:
+
+```
+src /
+  app /
+    layout.js
+    page.js
+    about /
+      layout.js
+      page.js
+    components /
+      button /
+        index.jsx
+```
+
+A simple `Button` component code may look like this, here using the `'use client'` directive to set this to be a `Client component`:
+
+```javascript
+// app/src/components/button/index.jsx
+
+'use client'
+
+const Button = ({ children }) => {
+  return (
+    <button>{children}</button>
+  )
+}
+
+export default Button
+```
+
+We can then import this component into our pages/routes. Here's the `Button` component being imported into the `About` page/route. Notice how we use the `fragement` of `<>` and `</>` to allow multiple elements/components to be rendered.
+
+```javascript
+// app/src/about/page.js
+
+import Link from 'next/link'
+
+import Button from '../components/button'
+
+export default function About() {
+  return (
+    <>
+      <Link href="/">Home</Link>
+      <Button>Example Button</Button>
+    </>
+  )
+}
+```
