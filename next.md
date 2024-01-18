@@ -1,6 +1,8 @@
 # Next
 The `Next` documentation can be found here: `https://nextjs.org/docs`
 
+The documentation below relate to `Next` version `14.0.4`.
+
 ## Installation
 `Next` requires `macOS`, `Windows` or `Linux` operating systems and `Node.js` version `18.17` or later to be installed.
 
@@ -179,3 +181,13 @@ export default function RootLayer({ children }) {
 ```
 
 This will render `<title>Test App</title>` for every page/route in our application. It is better to use the `Metadata API` to automatically handle this.
+
+## Components
+`Server components` and `Client components` were introduced from `Next` version `13`. By default, `Next` uses `Server components` allowing server rendering to be implemented without any additional configuration.
+
++ A `Server component` is a component that is fetched and rendered **ON THE SERVER**
++ A `Client component` is a component that is fetched and rendered **ON THE CLIENT (BROWSER)**
+
+It may always be best to add reusable React components into a directory within the `src` folder to make them easier to find - such as `src/app/components/`
+
+To use a `Client component`, use the `"use client"` directive at the top of the file, above any imports. A `Button` component would be an example of a `Client component`.
