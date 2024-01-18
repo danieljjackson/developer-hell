@@ -138,3 +138,24 @@ When viewing the `About` page - `src/app/about/page.js`, the content of the page
 
 + `Homepage`: `http://localhost:3000/`
 + `About`: `http://localhost:3000/about`
+
+## Updating & Modifying the `<head>`
+To update the `<head>` section of a page(s)/route, we can use the `built-in SEO support`. Metadata can be defined by exporting a `metadata object` or `generateMetadata function` in a `layout.js` or `page.js` file.
+
+In this example, we add a `<title>` tag to every page by default when using the `metadata object` in the `Root layout` file - `src/app/layout.js`.
+
+```javascript
+export const metadata = {
+  title: `Test App`
+}
+
+export default function RootLayer({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+This will render `<title>Test App</title>` for every page/route in our application. It is better to use the `Metadata API` to automatically handle this.
