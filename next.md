@@ -1,5 +1,4 @@
 # Next
-
 The `Next` documentation can be found here: `https://nextjs.org/docs`
 
 ## Installation
@@ -75,6 +74,19 @@ export default function RootLayer({ children }) {
 }
 ```
 
+This is the `Root layout` and is always required. It is usually found within the `app/` or `src/app/` directory and applies to all routes. This layout enables us to modify the initial HTML returned from the server. The root layout itself must always define the `<html>` and `<body>` tags.
+
+Only the `Root layout` can contain `<html>` and `<body>` tags.
+
+The `Root layout` can also use the `built-in SEO support` to manage `<head>` HTML elements, such as the `<title>` tag.
+
+The following is already added to each route by default:
+
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
 ### Homepage
 We can create a homepage using the `page.js` file within the `src/app/` folder. This will be rendered when we navigate to the root of the application (`/`).
 
@@ -83,3 +95,46 @@ export default function Home() {
   return <h1>Hello, World</h1>
 }
 ```
+
+## Routing & Pages
+A `page` is UI that is unique to a route and is always the `leaf` of the `route subtree`. The first page, often the `homepage`, is created by adding a `page.js` file inside the `app/` or `src/app` directory. This can then be viewed on the route (`/`).
+
+If we want to create a further page, such as the `About` page, we can create a page in a directory of `app/about/` or `src/app/about/` and add the `page.js` file here. This will create the UI for the `/about` URL.
+
+```javascript
+// src/app/about/page.js
+
+export default function About() {
+  return <h1>About</h1>
+}
+```
+
+On `localhost`, this page can be viewed here: `http://localhost:3000/about`.
+
+### Nested Layouts
+Once a route/page has been created, layouts defined inside a folder - for example, `app/about/layout.js` or `src/app/about/layout.js` - will apply to the specific route/page and render when those segments are active. These files are `nested`, meaning they wrap child layouts via their `children` prop.
+
+Here's the updated file structure:
+
+```
+src /
+  app /
+    layout.js
+    page.js
+    about /
+      layout.js
+      page.js
+```
+
+The `nested layout` of `src/app/about/layout.js` or `src/app/about/layout.tsx` (if using `TypeScript`), will look like this:
+
+```javascript
+export default function AboutLayout({ children }) {
+  return <section>{children}</section>
+}
+```
+
+When viewing the `About` page - `src/app/about/page.js`, the content of the page will be wrapped with a `<section>` tag, but on the `Homepage` - `src/app/page.js`, this is not applied. Both pages will share the layout found in the `Root layout` file - `src/app/layout.js`.
+
++ `Homepage`: `http://localhost:3000/`
++ `About`: `http://localhost:3000/about`
