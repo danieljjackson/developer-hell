@@ -271,6 +271,25 @@ export default function About() {
 }
 ```
 
+## Static Assets
+`Next` can serve static assets like `images`, under a folder called `public` in the root directory. Files in this `public` directory, can be referenced from within the code starting from the base URL (`/`).
+
+This folder is also useful for adding additional assets and files such as `robots.txt`, `favicon.ico`, static files such as `.html` and `Google Site Verification`.
+
+```
+public /
+  image.svg
+  robots.txt
+src /
+  app /
+    layout.js
+    page.js
+    about /
+    components /
+```
+
+Only assets that are in the `public` folder at `build time` will be served by `Next`.
+
 ## Images
 The `Next` `Image` component extends the HTML `<img>` element with features for automatic image optimisation. The component first needs to be imported:
 
@@ -279,7 +298,7 @@ import Image from 'next/image'
 ```
 
 ### Local Images
-To use local images, we import the image as a `.jpg`, `.png`, or `.webp` image file. `Next` will automatically determine the `width` and `height` of the image based on the file being imported. These values are used to prevent `Cumulative Layout Shift (CLS)` while the image is being loaded. The import is static so the image can be analyzed at build time.
+To use local images, we import the image as a `.jpg`, `.png`, `.svg`, or `.webp` image file. `Next` will automatically determine the `width` and `height` of the image based on the file being imported. These values are used to prevent `Cumulative Layout Shift (CLS)` while the image is being loaded. The import is static so the image can be analyzed at build time.
 
 The local images are to be found in the `public/` folder.
 
