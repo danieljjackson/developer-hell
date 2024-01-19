@@ -272,4 +272,54 @@ export default function About() {
 ```
 
 ## Images
-The `Next` `Image` component extends the HTML `<img>` element with features for automatic image optimisation.
+The `Next` `Image` component extends the HTML `<img>` element with features for automatic image optimisation. The component first needs to be imported:
+
+```javascript
+import Image from 'next/image'
+```
+
+### Local Images
+To use local images, we import the image as a `.jpg`, `.png`, or `.webp` image file. `Next` will automatically determine the `width` and `height` of the image based on the file being imported. These values are used to prevent `Cumulative Layout Shift (CLS)` while the image is being loaded. The import is static so the image can be analyzed at build time.
+
+The local images are to be found in the `public/` folder.
+
+```javascript
+// app/src/about/page.js
+
+import Image from 'next/image'
+
+import profilePicture from '../public/author.png'
+
+export default function About() {
+  return (
+    <>
+      <Image
+        src={profilePicture}
+        alt="Portrait of the author."
+      />
+    </>
+  )
+}
+```
+
+### Remote Images
+To use remote images, the `src` property should be a URL string. `Next` does not have access to remote files during the build process, so a remote image will need the `width` and `height` props to be added manually. The `width` and `height` attributes are used to infer the correct aspect ratio of the image and to avoid layout shift from the image loading in.
+
+```javascript
+// app/src/about/page.js
+
+import Image from 'next/image'
+
+export default function About() {
+  return (
+    <>
+      <Image
+        src="https://s3.amazonaws.com/my-bucket/profile.png"
+        alt="Portrait of the author."
+        width={500}
+        height={500}
+      />
+    </>
+  )
+}
+```
