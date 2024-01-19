@@ -270,3 +270,6 @@ export default function About() {
   )
 }
 ```
+
+## Images
+The `Next` `Image` component extends the HTML `<img>` element with features for automatic image optimisation.
