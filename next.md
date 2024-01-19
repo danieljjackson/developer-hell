@@ -3,6 +3,14 @@ The `Next` documentation can be found here: `https://nextjs.org/docs`
 
 The documentation below relate to `Next` version `14.0.4`.
 
+## Browser Support
+
++ `Chrome` 64 or later
++ `Edge` 79 or later
++ `Firefox` 67 or later
++ `Opera` 51 or later
++ `Safari` 12 or later
+
 ## Installation
 `Next` requires `macOS`, `Windows` or `Linux` operating systems and `Node.js` version `18.17` or later to be installed.
 
