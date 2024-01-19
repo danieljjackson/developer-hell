@@ -323,3 +323,25 @@ export default function About() {
   )
 }
 ```
+
+To allow images to be optimised, we need to define a list of supported URLs in the `next.config.js` file. The following configuration will only allow images from a specified Amazon S3 bucket.
+
+```javascript
+// next.config.js
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
+
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: `https`,
+        hostname: `s3.amazonaws.com`,
+        port: ``,
+        pathname: `/my-bucket/**`,
+      },
+    ],
+  },
+}
+```
