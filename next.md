@@ -442,3 +442,12 @@ module.exports = {
 
 ## Fetching Data
 Within our application, we usually want to fetch data from an `API endpoint` and/or a `database`. `Next` extends the native `Fetch API` to allow us to configure the caching and revalidating behavior for each fetch request on the server.
+
+## Connect to a CMS (Content Management System)
+
+### Connect to Storyblok
+Once our `Next` application is setup, we need to install `Storyblok's React SDK` package to allow our `Next` application to interact with `Storyblok`. This package will be installed as a `dependency` and listed in the `package.json` file.
+
+```shell
+npm install @storyblok/react
+```
