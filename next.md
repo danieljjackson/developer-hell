@@ -198,6 +198,15 @@ The `product details` dynamic page/route can be viewed here with different `ID` 
 
 Every page in the `app router` receives `route parameters` as a `prop`. This can be destructured as `params` in the function. The `params object` contains the `route parameters` as `value pairs`. So we can use the `params.productId` value to get the ID from the URL.
 
+### Custom 404 Page
+To create a `404 (not found) page` in our application, we need to add a `not-found.js`, or `not-found.tsx` if using TypeScript, page within the `src/app/` directory. To simplify, our code could look like this:
+
+```javascript
+export default function NotFound() {
+  return <h1>Page Not Found</h1>
+}
+```
+
 ### Links
 There are three ways to navigate between routes in `Next`:
 
@@ -421,3 +430,6 @@ module.exports = {
   },
 }
 ```
+
+## Fetching Data
+Within our application, we usually want to fetch data from an `API endpoint` and/or a `database`. `Next` extends the native `Fetch API` to allow us to configure the caching and revalidating behavior for each fetch request on the server.
