@@ -149,6 +149,55 @@ When viewing the `About` page - `src/app/about/page.js`, the content of the page
 + `Homepage`: `http://localhost:3000/`
 + `About`: `http://localhost:3000/about`
 
+### Dynamic Routing & Routes
+Dynamic routing allows a single page to be used to dynamically render data and content based on the route provided. As an example, we created a `product` page with a `dynamic route` of `productId` to show details about each product based on the `ID` passed into the URL/route. The dynamic route is created by generating a folder named with the `dynamic route` in square brackets, as with `[productId]`. This is called the `dynamic seqment` that is used to create dynamic routes. 
+
+The file structure in our application looks like this:
+
+```
+public /
+src /
+  app /
+    layout.js
+    page.js
+    about /
+    components /
+    products /
+      page.js
+      [productId] /
+        page.js
+```
+
+Our `product` page - `src/app/products/page.js` - looks like this:
+
+```javascript
+export default function Products() {
+  return (
+    <>
+      <h1>Products List</h1>
+
+      <h2>Product 1</h2>
+      <h2>Product 2</h2>
+      <h2>Product 3</h2>
+    </>
+  )
+}
+```
+
+The `products` page can be viewed here: `http://localhost:3000/products`
+
+Our dynamic route - `src/app/products/[productId]/page.js` - looks like this:
+
+```javascript
+export default function ProductDetails({ params }) {
+  return <h1>Details about the product {params.productId}</h1>
+}
+```
+
+The `product details` dynamic page/route can be viewed here with different `ID` values being passed into the URL. For example: `http://localhost:3000/products/1`, `http://localhost:3000/products/2`, or `http://localhost:3000/products/250`.
+
+Every page in the `app router` receives `route parameters` as a `prop`. This can be destructured as `params` in the function. The `params object` contains the `route parameters` as `value pairs`. So we can use the `params.productId` value to get the ID from the URL.
+
 ### Links
 There are three ways to navigate between routes in `Next`:
 
