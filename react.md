@@ -198,6 +198,20 @@ The hook takes an initial state value and returns an updates atete value wheneve
 const [state, setState] = useState(initialValue)
 ```
 
+If we don't wish to set an initial value, we can use an empty string:
+
+```javascript
+const [state, setState] = useState("")
+```
+
+To improve the performance of our application, we can update our hook to only run once instead of each time the component re-renders:
+
+```javascript
+const [state, setState] = useState(() => {
+  return initialValue
+})
+```
+
 Here, the `initialValue` is the value we want to start with and `state` is the current state value that can be used in our component. The `setState` function is used to update the `state` which will trigger a re-render of the component. The value rendered on the page will be the `initialValue` of `1`.
 
 Our example component would look something like this:
