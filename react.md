@@ -215,3 +215,23 @@ function Component() {
 
 export default Component
 ```
+
+#### Update ths state
+We can use the `useState` function, or whatever it's been named, to take a new value and update the `state` variable. Here's an example that uses a text box to update the `state` variable on every change. This will cause the component to re-render.
+
+```javascript
+import React, { useState } from "react"
+
+function Component() {
+  const [state, setState] = useState(1)
+
+  return (
+    <>
+      <input type="text" value={state} onChange={e => setState(e.target.value)} />
+      <div>{state}</div>
+    </>
+  )
+}
+
+export default Component
+```
