@@ -249,3 +249,39 @@ function Component() {
 
 export default Component
 ```
+
+The state can also be updated by using a `Button` component and an `onClick` event:
+
+```javascript
+<button type="button" onClick={() => setState(4)}>Set State to 4</button>
+```
+
+This is a simple `Counter` example to `increase` or `decrease` the count based on button clicks:
+
+```javascript
+import React, { useState } from "react"
+
+function Component() {
+  const [state, setState] = useState(() => {
+    return 4
+  })
+
+  const increaseCount = () => {
+    setState(prevCount => prevCount + 1)
+  }
+
+  const decreaseCount = () => {
+    setState(prevCount => prevCount -1)
+  }
+
+  return (
+    <>
+      <button type="button" onClick={decreaseCount}> - </button>
+      <span>{state}</span>
+      <button type="button" onClick={increaseCount}> + </button>
+    </>
+  )
+}
+
+export default Component
+```
