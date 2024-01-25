@@ -58,3 +58,127 @@ function App() {
 
 export default App
 ```
+
+## Components
+It is often best to add any reusable `components` into a folder/directory within the `src/` folder. For example, if we were to create a `Heading` component to replace our `<h1>` element, we can create a folder within our file structure and add a file named `index.jsx`.
+
+```
+node_modules /
+public /
+src /
+  assets /
+  components /
+    heading /
+      index.jsx
+```
+
+Our `Heading` component will be created within the `index.jsx` file with the following code:
+
+```javascript
+// src/components/heading/index.jsx
+
+function Heading() {
+  return <h1>Heading</h1>
+}
+
+export default Heading
+```
+
+We can then import this into the `App.jsx` file to render our `Heading` component:
+
+```javascript
+import Heading from "./components/heading"
+
+function App() {
+  return (
+    <Heading />
+  )
+}
+
+export default App
+```
+
+### Props
+We can use `props`, also known as `properties`, within our components to pass data into the component to render. In the `Heading` component, we can use the `children` prop to change the content of the heading to display something different each time the component is used.
+
+
+```javascript
+// src/components/heading/index.jsx
+
+function Heading({ children }) {
+  return <h1>{children}</h1>
+}
+
+export default Heading
+```
+
+We can pass data into the `prop` within our component like so to render the heading of `"This is a Heading"` onto the page:
+
+```javascript
+import Heading from "./components/heading"
+
+function App() {
+  return (
+    <Heading>This is a Heading</Heading>
+  )
+}
+
+export default App
+```
+
+In this example of a `Heading` component, we can change the element being rendered using a `prop` named `level` to set the type of Heading being rendered, from `<h1>` through to `<h6>`.
+
+```javascript
+// src/components/heading/index.jsx
+
+function Heading({ level, children }) {
+  const Tag = `h${level}`
+
+  return <Tag>{children}</Tag>
+}
+
+export default Heading
+```
+
+For example, if we want to set the `Heading` to render as a `<h2>`, we can pass the value of `2` into the `level` prop.
+
+```javascript
+import Heading from "./components/heading"
+
+function App() {
+  return (
+    <Heading level={2}>This is a Heading</Heading>
+  )
+}
+
+export default App
+```
+
+### Default Prop Values
+We can set default values for our `props` within a component. These default values will be used when the component renders unless a value is passed into the component. For example, we can set the `level` of the `Heading` to be `1` so that a heading will always render as a `<h1>` unless we pass a value into the component to overwrite this.
+
+```javascript
+// src/components/heading/index.jsx
+
+function Heading({ level = 1, children }) {
+  const Tag = `h${level}`
+
+  return <Tag>{children}</Tag>
+}
+
+export default Heading
+```
+
+So if we pass no value into the `level` prop when using the `Heading` component, it will render, by default, as a `<h1>` heading.
+
+```javascript
+import Heading from "./components/heading"
+
+function App() {
+  return (
+    <Heading>This is a h1 Heading</Heading>
+  )
+}
+
+export default App
+```
