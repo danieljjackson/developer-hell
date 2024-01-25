@@ -271,7 +271,7 @@ function Component() {
   }
 
   const decreaseCount = () => {
-    setState(prevCount => prevCount -1)
+    setState(prevCount => prevCount - 1)
   }
 
   return (
