@@ -182,3 +182,36 @@ function App() {
 
 export default App
 ```
+
+## Hooks
+
+### useState
+The `useState` hook allows us to add `state` to a component. It returns an `array` with two values: the `current state` and a `function` to `update the state`. To use the `useState` hook, we must first import it into our component.
+
+```javascript
+import React, { useState } from "react"
+```
+
+The hook takes an initial state value and returns an updates atete value whenever the `setter function` is called.
+
+```javascript
+const [state, setState] = useState(initialValue)
+```
+
+Here, the `initialValue` is the value we want to start with and `state` is the current state value that can be used in our component. The `setState` function is used to update the `state` which will trigger a re-render of the component. The value rendered on the page will be the `initialValue` of `1`.
+
+Our example component would look something like this:
+
+```javascript
+import React, { useState } from "react"
+
+function Component() {
+  const [state, setState] = useState(1)
+
+  return (
+    <div>{state}</div>
+  )
+}
+
+export default Component
+```
