@@ -445,6 +445,9 @@ Within our application, we usually want to fetch data from an `API endpoint` and
 
 ## Connect to a CMS (Content Management System)
 
+**Useful Links (To Be Removed)**:
++ https://www.youtube.com/watch?v=kbk-_guDskg
+
 ### Connect to Storyblok
 Once our `Next` application is setup, we need to install `Storyblok's React SDK` package to allow our `Next` application to interact with `Storyblok`. This package will be installed as a `dependency` and listed in the `package.json` file.
 
