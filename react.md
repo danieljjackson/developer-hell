@@ -245,6 +245,31 @@ export default App
 
 In this example, we are making an `HTTP request` to the `JSONPlaceholder API` using `fetch`. We then use `useState` to create a state variable called `data` and initialize an empty array. Using the `useEffect` hook, we define a function called `fetchData` that makes an API request using `fetch`, parses the response using `response.json()`, and then updates the `state` using the `setData` function in the `useState` hook. When we call the `fetchData()` function in the `useEffect` hook, we fetch the data when the component first renders. Finally, we map over the `data array` to display the user information in a list.
 
+We can do something similar with images:
+
+```javascript
+import React, { useState, useEffect } from "react"
+
+function App() {
+  const [dogImage, setDogImage] = useState(null)
+
+  useEffect(() => {
+    fetch('https://dog.ceo/api/breeds/image/random/3')
+      .then(response => response.json())
+      // Set the dogImage to the image URL that we received from the above response
+      .then(data => setDogImage(data.message))
+  }, [])
+
+  return (
+    <>
+      {dogImage && dogImage.map((dog) => <img key={dog} width="200px" height="200px" src={dog} alt="Image of a dog." />)}
+    </>
+  )
+}
+
+export default App
+```
+
 ### useState
 The `useState` hook allows us to add `state` to a component. It returns an `array` with two values: the `current state` and a `function` to `update the state`. To use the `useState` hook, we must first import it into our component.
 
