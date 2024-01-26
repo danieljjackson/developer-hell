@@ -185,6 +185,66 @@ export default App
 
 ## Hooks
 
+### useEffect
+The `useEffect` hook is usually used to `fetch data`, `read from local storage`, and `register/deregister event listeners`. The `useEffect` hook allows us to perform side effects within our component. 
+
+We must first import the hook into our component:
+
+```javascript
+import React, { useEffect } from "react"
+```
+
+We can then use the `useEffect` hook that will only run on the first render of the component:
+
+```javascript
+useEffect(() => {
+  // This will only run on the first render
+}, [])
+```
+
+If we want the `useEffect` hook to run on every render of the component:
+
+```javascript
+useEffect(() => {
+  // This will run on every render
+})
+```
+
+For example, we can use the `useEffect` hook to fetch data from an `API`, update the state using the `useState` hook, and re-render the component with the new data.
+
+```javascript
+import React, { useState, useEffect } from "react"
+
+function App() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const jsonData = await response.json()
+      setData(jsonData)
+    }
+    fetchData()
+  }, [])
+
+  return (
+    <>
+      <ul>
+        {data.map(user => (
+          <li key={user.id}>
+            {user.name} ({user.email})
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+export default App
+```
+
+In this example, we are making an `HTTP request` to the `JSONPlaceholder API` using `fetch`. We then use `useState` to create a state variable called `data` and initialize an empty array. Using the `useEffect` hook, we define a function called `fetchData` that makes an API request using `fetch`, parses the response using `response.json()`, and then updates the `state` using the `setData` function in the `useState` hook. When we call the `fetchData()` function in the `useEffect` hook, we fetch the data when the component first renders. Finally, we map over the `data array` to display the user information in a list.
+
 ### useState
 The `useState` hook allows us to add `state` to a component. It returns an `array` with two values: the `current state` and a `function` to `update the state`. To use the `useState` hook, we must first import it into our component.
 
