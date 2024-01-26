@@ -210,6 +210,7 @@ useEffect(() => {
 })
 ```
 
+#### Fetch Data
 For example, we can use the `useEffect` hook to fetch data from an `API`, update the state using the `useState` hook, and re-render the component with the new data.
 
 ```javascript
@@ -269,6 +270,10 @@ function App() {
 
 export default App
 ```
+
+**Useful links (to be removed):**
++ https://maxrozen.com/fetching-data-react-with-useeffect
++ https://www.robinwieruch.de/react-hooks-fetch-data/
 
 ### useState
 The `useState` hook allows us to add `state` to a component. It returns an `array` with two values: the `current state` and a `function` to `update the state`. To use the `useState` hook, we must first import it into our component.
