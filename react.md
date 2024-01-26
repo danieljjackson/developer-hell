@@ -211,6 +211,35 @@ useEffect(() => {
 ```
 
 #### Fetch Data
+Here is a simple template to use the `useEffect` hook to only fetch data:
+
+```javascript
+useEffect(() => {
+  const fetchData = async () => {
+    const response = await fetch(`https://example-api-endpoint/`)
+    const newData = await response.json()
+  }
+
+  fetchData()
+})
+```
+
+We can update this example further, to pass a prop called `id` to the URL. The `dependency array` is updated to only run this `useEffect` when the `id` changes and then we can use the `useState` hook to store our data so we can display it later.
+
+```javascript
+useEffect(() => {
+  const fetchData = async () => {
+    const response = await fetch(`https://example-api-endpoint/${props.id}/`)
+    const newData = await response.json()
+      setData(newData)
+  }
+
+  fetchData()
+}, [props.id])
+```
+
+The example endpoint of `https://example-api-endpoint/${props.id}/` could be replaced with `https://swapi.dev/api/people/${props.id}/`.
+
 For example, we can use the `useEffect` hook to fetch data from an `API`, update the state using the `useState` hook, and re-render the component with the new data.
 
 ```javascript
